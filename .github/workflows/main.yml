@@ -17,6 +17,17 @@ jobs:
       - name: write to file
         run : echo "hello" >> text.txt
       
+
       - name: run test
         run : pytest -q >> README.md
         
+      - name: Commit changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Actions"
+          git add text.txt
+          git commit -m "added text file"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
