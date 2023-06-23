@@ -24,8 +24,9 @@ jobs:
           git add README.md
           git commit -m "update README.md with results"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push
          env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: git push
+
        
