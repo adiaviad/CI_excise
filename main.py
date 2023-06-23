@@ -17,5 +17,5 @@ def verify_login(username, password):
         result = False
     elif not username.isalnum():
         result = False
-    return True
+    return result
 
