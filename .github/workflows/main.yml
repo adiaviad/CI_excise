@@ -18,7 +18,7 @@ jobs:
 
       - name: Run pytest
         run : pytest -q >> $logOutput
-         #git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+   
       - name: commit logs
         if: success() || failure()
         run : |
