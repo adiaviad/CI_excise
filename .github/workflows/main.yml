@@ -6,29 +6,31 @@ jobs:
   test:
     name: python test
     runs-on : ubuntu-latest
-    
+    env:
+      logOutput: README.md
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: Install pytest
-        run: pip install -U pytest
+#       - name: Install pytest
+#         run: pip install -U pytest
 
 #       - name: Run pytest
 #         run : pytest -q >> README.md
 
-      - run: echo "hello" >> README.md
+      - run: echo "hello" >> $logOutput
       - run: exit 1
       - name: commit logs
         if: success() || failure()
         run : |
           git config --global user.name "GitHub Actions"
-          git add README.md
-          git commit -m "update README.md with results"
+          git add $logOutput
+          git commit -m "update $logOutput with results"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
 
 
        
