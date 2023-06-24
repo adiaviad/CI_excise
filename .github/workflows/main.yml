@@ -25,7 +25,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git add $logOutput
           git commit -m "update $logOutput with results"
-         
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
