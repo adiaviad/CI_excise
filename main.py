@@ -19,3 +19,6 @@ def verify_login(username, password):
         result = False
     return result
 
+
+def add(number, num2):
+    return number +num2
