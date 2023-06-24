@@ -6,7 +6,7 @@ jobs:
     name: python test
     runs-on : ubuntu-latest
     env:
-      log: README.md
+      log_Output: README.md
       temp_log: temp_log.txt
     steps:
       - name: Checkout repository
@@ -15,7 +15,8 @@ jobs:
       - name: Install pytest
         run: pip install -U pytest
 
-      - run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $logOutput
+      - name: add date
+        run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $log_Output
 
       #runs the test and puts the output in a temporary file that will not be tracked by git
       - name: Run pytest
@@ -31,13 +32,13 @@ jobs:
         run: git checkout master
 
       - name: append log to README
-        run : cat $temp_log >> $log
+        run : cat $temp_log >> $log_Output
 
       - name: commit logs
         if: success() || failure()
         run : |
-          git add $log
-          git commit -m "update $log with results"
+          git add $log_Output
+          git commit -m "update $log_Output with results"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
