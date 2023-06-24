@@ -15,7 +15,7 @@ jobs:
       - name: Install pytest
         run: pip install -U pytest
 
-      - run: echo -e "\n\n___results from $(date +'%Y-%m-%d')____\n\n" >> $logOutput
+      - run: echo -e "\n\n\n__results from $(date +'%Y-%m-%d')__\n\n" >> $logOutput
 
       - name: Run pytest
         run : pytest -q >> $logOutput
