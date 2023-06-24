@@ -29,7 +29,9 @@ jobs:
 
       #the output log will be appended to the README.md in master so a checkout first is needed
       - name: checkout master
-        run: git checkout master
+        run: |
+          git fetch
+          git checkout master
 
       - name: append log to README
         run : cat $temp_log >> $log_Output
