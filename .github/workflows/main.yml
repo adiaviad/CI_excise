@@ -1,0 +1,35 @@
+on:
+  pull_request:
+
+jobs:
+  test:
+    name: python test
+    runs-on : ubuntu-latest
+    env:
+      logOutput: README.md
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Install pytest
+        run: pip install -U pytest
+
+      - run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $logOutput
+
+      - name: Run pytest
+        run : pytest -q >> $logOutput
+        
+      - name: commit logs
+        if: success() || failure()
+        run : |
+          git config --global user.name "GitHub Actions"
+          git add $logOutput
+          git commit -m "update $logOutput with results"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+
+
+       
