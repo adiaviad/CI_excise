@@ -6,7 +6,8 @@ jobs:
     name: python test
     runs-on : ubuntu-latest
     env:
-      logOutput: README.md
+      log: README.md
+      temp_log: temp_log.txt
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -16,16 +17,27 @@ jobs:
 
       - run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $logOutput
 
+      #runs the test and puts the output in a temporary file that will not be tracked by git
       - name: Run pytest
-        run : pytest >> $logOutput
-   
+        run : pytest > $temp_log
+
+      - name: config git
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Actions"
+
+      #the output log will be appended to the README.md in master so a checkout first is needed
+      - name: checkout master
+        run: git checkout master
+
+      - name: append log to README
+        run : cat $temp_log >> $log
+
       - name: commit logs
         if: success() || failure()
         run : |
-          git config --global user.email "action@github.com"
-          git config --global user.name "GitHub Actions"
-          git add $logOutput
-          git commit -m "update $logOutput with results"
+          git add $log
+          git commit -m "update $log with results"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
