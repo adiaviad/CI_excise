@@ -22,6 +22,7 @@ jobs:
       - name: commit logs
         if: success() || failure()
         run : |
+          git config --global user.email "action@github.com"
           git config --global user.name "GitHub Actions"
           git add $logOutput
           git commit -m "update $logOutput with results"
