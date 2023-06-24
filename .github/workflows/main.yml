@@ -12,14 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-#       - name: Install pytest
-#         run: pip install -U pytest
+      - name: Install pytest
+        run: pip install -U pytest
 
-#       - name: Run pytest
-#         run : pytest -q >> README.md
+      - name: Run pytest
+        run : pytest -q >> README.md
 
-      - run: echo "hello" >> $logOutput
-      - run: exit 1
+#       - run: echo "hello" >> $logOutput
+#       - run: exit 1
       - name: commit logs
         if: success() || failure()
         run : |
