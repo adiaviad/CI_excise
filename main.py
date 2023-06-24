@@ -25,4 +25,3 @@ def add(number, num2):
 
 
 print("hello world")
-print("hello world")
