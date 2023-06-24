@@ -1,5 +1,8 @@
 # CI_excise
 
+after each pull request the results of test will be appended to this file, including failures and passes of tests. 
+
+
 __results from 2023-06-24__
 
 .....x                                                                   [100%]
