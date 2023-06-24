@@ -15,13 +15,11 @@ jobs:
       - name: Install pytest
         run: pip install -U pytest
 
-      - run: echo -e "\n\n\n\n\n\n__results from $(date +'%Y-%m-%d')__\n\n\n\n\n\n" >> $logOutput
+      - run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $logOutput
 
       - name: Run pytest
         run : pytest -q >> $logOutput
-
-#       - run: echo "hello" >> $logOutput
-
+        
       - name: commit logs
         if: success() || failure()
         run : |
