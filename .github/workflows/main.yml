@@ -15,17 +15,19 @@ jobs:
         run: pip install -U pytest
 
 #       - name: Run pytest
-#         run: pytest 
+#         run : pytest -q >> README.md
 
       - run: echo "hello" >> README.md
       
-      -  run: |
+      - name: commit logs
+        if: success() || failure()
+        run : |
           git config --global user.name "GitHub Actions"
           git add README.md
           git commit -m "update README.md with results"
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git push
-         env:
+          env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
