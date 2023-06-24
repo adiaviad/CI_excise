@@ -17,7 +17,7 @@ jobs:
       - run: echo -e "\n__results from $(date +'%Y-%m-%d')__\n" >> $logOutput
 
       - name: Run pytest
-        run : pytest -q >> $logOutput
+        run : pytest >> $logOutput
    
       - name: commit logs
         if: success() || failure()
