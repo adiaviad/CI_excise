@@ -3,7 +3,7 @@
 # password minimum length is 6
 pass_min_length = 6
 user_min_length = 3
-#useless comment
+
 
 def verify_login(username, password):
     result = True
