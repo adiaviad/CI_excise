@@ -15,7 +15,7 @@
 5 passed, 1 xfailed in 0.04s
 
 ## __results from 2023-06-26__ intential_fail -> master 
-![Static Badge](https://img.shields.io/badge/test-fail-red)
+## ![Static Badge](https://img.shields.io/badge/test-fail-red)
 
 .....xF                                                                  [100%]
 =================================== FAILURES ===================================
