@@ -184,3 +184,9 @@ FAILED test_CI.py::test_non_alphanumeric_useranme - AssertionError: assert not T
  +  where True = <function verify_login at 0x7fa961722560>('user', '124321')
  +    where <function verify_login at 0x7fa961722560> = main.verify_login
 1 failed, 4 passed, 1 xfailed in 0.04s
+
+## __results from 2023-06-26__ badges -> master 
+![Static Badge](https://img.shields.io/badge/test-pass-green)
+
+.....x                                                                   [100%]
+5 passed, 1 xfailed in 0.04s
