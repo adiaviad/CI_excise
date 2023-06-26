@@ -22,39 +22,38 @@ jobs:
 
       # runs the test and puts the output in a temporary file that will not be tracked by git
       - name: Run pytest
-        id  : pytest
         run : pytest > $temp_log
 
       # add failure badge if the test failed
       - name: add test fail badge
-        if: steps.pytest.outcome == 'failure'
-        run: echo -e "\n![Static Badge](https://img.shields.io/badge/test-fail-red)\n" >> $log_Output
+        if  : failure()
+        run : echo "![Static Badge](https://img.shields.io/badge/test-fail-red)" >> $log_Output
 
       # add pass badge if the test didn't fail
       - name: add test pass badge
-        if: steps.pytest.outcome == 'success'
-        run: echo -e "\n![Static Badge](https://img.shields.io/badge/test-pass-green)\n" >> $log_Output
+        if  : success()
+        run : echo "![Static Badge](https://img.shields.io/badge/test-pass-green)" >> $log_Output
 
       - name: config git
-        if: success() || failure()
-        run: |
+        if  : success() || failure()
+        run : |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Actions"
 
       #the output log will be appended to the README.md in master so a checkout first is needed
       - name: checkout master
-        if: success() || failure()
-        run: |
+        if  : success() || failure()
+        run : |
           git fetch
           git checkout master
 
 
       - name: append log to README
-        if: success() || failure()
+        if  : success() || failure()
         run : cat $temp_log >> $log_Output
 
       - name: commit logs
-        if: success() || failure()
+        if  : success() || failure()
         run : |
           git add $log_Output
           git commit -m "update $log_Output with results"
