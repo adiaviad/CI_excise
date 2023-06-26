@@ -125,3 +125,22 @@ FAILED test_CI.py::test_non_alphanumeric_useranme - AssertionError: assert not T
  +  where True = <function verify_login at 0x7fb196242680>('משתמש', '124321')
  +    where <function verify_login at 0x7fb196242680> = main.verify_login
 ==================== 1 failed, 4 passed, 1 xfailed in 0.03s ====================
+
+__results from 2023-06-26__ badges -> master 
+![Static Badge](https://img.shields.io/badge/test-fail-red)
+..F..x                                                                   [100%]
+=================================== FAILURES ===================================
+________________________ test_non_alphanumeric_useranme ________________________
+
+    def test_non_alphanumeric_useranme():
+>       assert not main.verify_login("user", "124321")
+E       AssertionError: assert not True
+E        +  where True = <function verify_login at 0x7f74cfa6a560>('user', '124321')
+E        +    where <function verify_login at 0x7f74cfa6a560> = main.verify_login
+
+test_CI.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED test_CI.py::test_non_alphanumeric_useranme - AssertionError: assert not True
+ +  where True = <function verify_login at 0x7f74cfa6a560>('user', '124321')
+ +    where <function verify_login at 0x7f74cfa6a560> = main.verify_login
+1 failed, 4 passed, 1 xfailed in 0.03s
