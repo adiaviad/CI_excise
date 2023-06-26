@@ -8,7 +8,6 @@ jobs:
     env:
       log_Output: README.md
       temp_log: temp_log.txt
-      info: __results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -16,12 +15,6 @@ jobs:
       - name: Install pytest
         run: pip install -U pytest
 
-#      - name: add date & branch info
-#        run: |
-#          echo -e "\n"
-#          echo "## __results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}" >> $log_Output
-
-      
 
       # runs the test and puts the output in a temporary file that will not be tracked by git
       - name: Run pytest
@@ -30,12 +23,12 @@ jobs:
       # add failure badge if the test failed
       - name: add test fail badge
         if  : failure()
-        run : echo -e "## $info ![Static Badge](https://img.shields.io/badge/test-fail-red)\n" >> $log_Output
+        run : echo -e "\n## __results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }} ![Static Badge](https://img.shields.io/badge/test-fail-red)\n" >> $log_Output
 
       # add pass badge if the test didn't fail
       - name: add test pass badge
         if  : success()
-        run : echo -e "## ${{info}} ![Static Badge](https://img.shields.io/badge/test-pass-green)\n" >> $log_Output
+        run : echo -e "\n## __results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }} ![Static Badge](https://img.shields.io/badge/test-pass-green)\n" >> $log_Output
 
       - name: config git
         if  : success() || failure()
