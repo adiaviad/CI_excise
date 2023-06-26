@@ -29,3 +29,7 @@ test_CI.py:35: Failed
 =========================== short test summary info ============================
 FAILED test_CI.py::test_fail - Failed
 1 failed, 5 passed, 1 xfailed in 0.03s
+.....x                                                                   [100%]
+5 passed, 1 xfailed in 0.04s
+ ![Static Badge](https://img.shields.io/badge/test-pass-green)
+
