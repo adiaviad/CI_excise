@@ -57,3 +57,8 @@ FAILED test_CI.py::test_fail - Failed
 
 .....x                                                                   [100%]
 5 passed, 1 xfailed in 0.03s
+
+## __results from 2023-06-26__ badges -> master
+![Static Badge](https://img.shields.io/badge/test-pass-green)
+.....x                                                                   [100%]
+5 passed, 1 xfailed in 0.03s
