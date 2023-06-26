@@ -17,7 +17,7 @@ jobs:
 
       - name: add date
         run: |
-          echo -e "\n## __results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}" >> $log_Output
+          echo -e "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}" >> $log_Output
 
       
 
