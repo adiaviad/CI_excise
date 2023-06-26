@@ -29,3 +29,7 @@ def test_normal_add_functionality():
 @pytest.mark.xfail(raises=TypeError)
 def test_type_error():
     main.add("sd", 2)
+
+# always fails. used to test what happens when tests fail
+def test_fail():
+    pytest.fail()
