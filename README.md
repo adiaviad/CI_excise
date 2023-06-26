@@ -1,6 +1,6 @@
 # CI_excise
 
-after each pull request the results of test will be appended to this file, including failures (![Static Badge](https://img.shields.io/badge/test-fail-red)) and succeses (![Static Badge](https://img.shields.io/badge/test-pass-green))of tests. 
+### after each pull request the results of test will be appended to this file, including failures ![Static Badge](https://img.shields.io/badge/test-fail-red) and succeses ![Static Badge](https://img.shields.io/badge/test-pass-green) of tests. 
 
 
 
