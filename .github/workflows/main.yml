@@ -15,9 +15,9 @@ jobs:
       - name: Install pytest
         run: pip install -U pytest
 
-      - name: add date
-        run: |
-          echo "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}" >> $log_Output
+#      - name: add date
+#        run: |
+#          echo -e "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }}" >> $log_Output
 
       
 
@@ -28,12 +28,12 @@ jobs:
       # add failure badge if the test failed
       - name: add test fail badge
         if  : failure()
-        run : echo "![Static Badge](https://img.shields.io/badge/test-fail-red)" >> $log_Output
+        run : echo -e "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} -> ${{ github.event.pull_request.base.ref }} ![Static Badge](https://img.shields.io/badge/test-fail-red)" >> $log_Output
 
       # add pass badge if the test didn't fail
       - name: add test pass badge
         if  : success()
-        run : echo "![Static Badge](https://img.shields.io/badge/test-pass-green)" >> $log_Output
+        run : echo -e "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }} ![Static Badge](https://img.shields.io/badge/test-pass-green)" >> $log_Output
 
       - name: config git
         if  : success() || failure()
