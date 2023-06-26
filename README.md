@@ -99,3 +99,29 @@ FAILED test_CI.py::test_non_alphanumeric_useranme - AssertionError: assert not T
  +  where True = <function verify_login at 0x7f2c48a6e680>('משתמש', '124321')
  +    where <function verify_login at 0x7f2c48a6e680> = main.verify_login
 ==================== 1 failed, 4 passed, 1 xfailed in 0.03s ====================
+
+__results from 2023-06-26__ badges -> master 
+
+![Static Badge](https://img.shields.io/badge/test-fail-red)
+============================= test session starts ==============================
+platform linux -- Python 3.10.6, pytest-7.4.0, pluggy-1.2.0
+rootdir: /home/runner/work/CI_excise/CI_excise
+collected 6 items
+
+test_CI.py ..F..x                                                        [100%]
+
+=================================== FAILURES ===================================
+________________________ test_non_alphanumeric_useranme ________________________
+
+    def test_non_alphanumeric_useranme():
+>       assert not main.verify_login("משתמש", "124321")
+E       AssertionError: assert not True
+E        +  where True = <function verify_login at 0x7fb196242680>('משתמש', '124321')
+E        +    where <function verify_login at 0x7fb196242680> = main.verify_login
+
+test_CI.py:17: AssertionError
+=========================== short test summary info ============================
+FAILED test_CI.py::test_non_alphanumeric_useranme - AssertionError: assert not True
+ +  where True = <function verify_login at 0x7fb196242680>('משתמש', '124321')
+ +    where <function verify_login at 0x7fb196242680> = main.verify_login
+==================== 1 failed, 4 passed, 1 xfailed in 0.03s ====================
