@@ -14,7 +14,7 @@ def test_non_string_password():
 
 #  password is fine but username is not, function should return False
 def test_non_alphanumeric_useranme():
-    assert not main.verify_login("משתמש", "124321")
+    assert not main.verify_login("user", "124321")
 
 
 # username is fine but password is too short, function should return False
