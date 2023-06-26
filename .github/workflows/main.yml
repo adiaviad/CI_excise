@@ -35,7 +35,7 @@ jobs:
         if  : success()
         run : |
           echo -e "\n__results from $(date +'%Y-%m-%d')__ ${{ github.event.pull_request.head.ref }}"
-          echo -e ![Static Badge](https://img.shields.io/badge/test-pass-green)\n" >> $log_Output
+          echo -e "![Static Badge](https://img.shields.io/badge/test-pass-green)\n" >> $log_Output
 
       - name: config git
         if  : success() || failure()
